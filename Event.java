@@ -1,3 +1,5 @@
+package code;
+
 
 
 /*
@@ -14,13 +16,25 @@ public class Event {
     String timeStamp;
     String idSensor;
     String status;
+    String typeSensor;
     Double value = 0.0;
+    String location;
+    double trust;
 
     public Event(String timeStamp, String idSensor, String status, Double value) {
         this.timeStamp = timeStamp;
         this.idSensor = idSensor;
         this.status = status;
         this.value = value;
+    }
+
+    public Event(String timeStamp, String idSensor, String status,String typeSensor, String location, double trust) {
+        this.timeStamp = timeStamp;
+        this.idSensor = idSensor;
+        this.status = status;
+        this.typeSensor = typeSensor;
+        this.location = location;
+        this.trust = trust;
     }
     
     public String getTimeStamp() {
@@ -57,7 +71,23 @@ public class Event {
 
     @Override
     public String toString() {
-        return "CEPStove{" + "timeStamp=" + timeStamp + ", idSensor=" + idSensor + ", status=" + status + ", value=" + value + '}';
+        return " {" + "timeStamp=" + timeStamp + ", idSensor=" + idSensor + ", status=" + status + "}";
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public double getTrust() {
+        return trust;
+    }
+
+    public void setTrust(double trust) {
+        this.trust = trust;
     }
     
     

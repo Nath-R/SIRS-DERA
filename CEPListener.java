@@ -1,3 +1,5 @@
+package code;
+
 
 import com.espertech.esper.client.EventBean;
 import com.espertech.esper.client.UpdateListener;
@@ -14,7 +16,20 @@ import com.espertech.esper.client.UpdateListener;
  */
 public class CEPListener implements UpdateListener {
  public void update(EventBean[] newData, EventBean[] oldData) {
-         System.out.println("Event received: "
+         
+    // System.out.println("timeStamp : "+newData[0].get("timeStamp"));
+     //System.out.println("idSensor : "+newData[0].get("idSensor"));
+     
+     System.out.println("Semantic Event received : "
                             + newData[0].getUnderlying());
+         
+         
+         
+         
+         //fuzzy location
+         /*System.out.println("à spliter " + newData[0].getUnderlying().toString());
+         String[] parts = newData[0].getUnderlying().toString().split(", ");
+         System.out.println(parts[1] + parts[3]);*/
+        
     }
 }

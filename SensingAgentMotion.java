@@ -1,3 +1,5 @@
+package code;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,6 +25,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -32,30 +35,15 @@ import java.util.Locale;
  */
 public class SensingAgentMotion extends Agent {    
 
-    private static final Logger monLog = Logger.getLogger("SensingAgentMotion"); 
+    //private static final Logger monLog = Logger.getLogger("code/SensingAgentMotion"); 
     int cTosPortNumber = 4031;
     String str;    
     Socket fromClientSocket= null ;
     PrintWriter pw;    
 
-    public static void initLog(){
-        // Test log :      
-        monLog.setLevel(Level.ALL); //pour envoyer les messages de tous les niveaux
-        FileHandler aFileHandler;
-        try {     
-            aFileHandler = new FileHandler("logs/motion/trace.log", true);
-            monLog.addHandler(aFileHandler);            
-            SimpleFormatter formatter = new SimpleFormatter();            
-            aFileHandler.setFormatter(formatter);
-        } catch (IOException e1) {
-            // TODO Bloc catch auto-généré
-            e1.printStackTrace();
-        }     
-    }
-      
+    
     protected void setup() {                
 
-        SensingAgentMotion.initLog();     
         try { 
             ServerSocket servSocket = new ServerSocket(cTosPortNumber);
             System.out.println("Sensing Agent Motion on " + cTosPortNumber);
@@ -63,24 +51,16 @@ public class SensingAgentMotion extends Agent {
         }
         catch (IOException ex) {
              Logger.getLogger(SensingAgentMotion.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }         
         
-        ParallelBehaviour comportementparallele = new ParallelBehaviour(ParallelBehaviour.WHEN_ANY);
-        comportementparallele.addSubBehaviour(new TickerBehaviour(this,9000){
-                @Override
-                protected void onTick() {                        
-                        monLog.log(Level.INFO, "Segment END \n");
-                }
-        });
-        comportementparallele.addSubBehaviour(new TickerBehaviour(this,1000){
-        
+        addBehaviour(new TickerBehaviour(this, 1000) {
         @Override
         protected void onTick() {
                      try {
                         pw = new PrintWriter(fromClientSocket.getOutputStream(), true);                         
                         BufferedReader br = new BufferedReader(new InputStreamReader(fromClientSocket.getInputStream()));
                         while ((str = br.readLine()) != null) {
-                            System.out.println("The message: " + str);                                                                      
+                            //System.out.println("The message: " + str);                                                                      
                             
                             if (str.equals("bye")) {
                                 pw.println("bye");
@@ -88,13 +68,21 @@ public class SensingAgentMotion extends Agent {
                             } else {
                                 //str = "Server returns " + str;                                        
                                 pw.println(str);
-                                monLog.log(Level.INFO, str);
+                                //monLog.log(Level.INFO, str);
                                 
                                 String[] parts = str.split(" ");                            
                                 String timestamp = parts[0] + " "+ parts[1];
-                                System.out.println("long : "+ parts.length +" " + timestamp);
-                                Event e = new Event(timestamp, parts[2], parts[3], 0.0);
-                                System.out.println("event motion : " + e.getTimeStamp() + e.getIdSensor() + e.getStatus());
+                                //System.out.println("long : "+ parts.length +" " + timestamp);
+                                String nameSensor = parts[2];
+                                String statusSensor = parts[3];  
+                                String typeSensor = parts[4];
+                                //System.out.println("typeSensor : " + typeSensor);
+                                
+                                //access to ontology
+                                Ontology o = new Ontology();                                
+                                ArrayList <String> res = o.queryOnto(nameSensor, typeSensor);
+                                //System.out.println("resultat : " + res.get(0) + " " + res.get(1));                                
+                                Event e = new Event(timestamp, nameSensor, statusSensor, typeSensor, res.get(0), Double.parseDouble(res.get(1)));
                                 
                                 //CEP ESPER
                                 Configuration cepConfig = new Configuration();
@@ -103,18 +91,23 @@ public class SensingAgentMotion extends Agent {
                                 EPRuntime cepRT = cep.getEPRuntime();
                                 // We register an EPL statement
                                 EPAdministrator cepAdm = cep.getEPAdministrator();
-                                EPStatement cepStatement = cepAdm.createEPL("select idSensor from Event.win:time(3 sec)");
-                                System.out.println("Sending event :" + e);
+                                EPStatement cepStatement = cepAdm.createEPL("select distinct timeStamp, idSensor, status, location, trust from Event.win:time(10 sec) order by idSensor");
+                                System.out.println("Sending event Motion :" + e);
                                 cepRT.sendEvent(e);
+                                EPStatement cepStatement3 = cepAdm.createEPL("select sum(trust) as sumTrust from Event.win:time(10 sec) where status =\"ON\" output last every 10 seconds");                                                      
+                                
+                                EPStatement cepStatement2 = cepAdm.createEPL("select location, sum(trust) as sumTrust from Event.win:time(10 sec) where status =\"ON\" group by location output last every 10 seconds");                        
                                 cepStatement.addListener(new CEPListener());
+                                cepStatement3.addListener(new CEPListenerCount());
+                                cepStatement2.addListener(new CEPListenerSumTrust()); 
+                                System.out.println("End Motion");
                             }
                         }
                         } catch (IOException ex) {
                         Logger.getLogger(SensingAgentMotion.class.getName()).log(Level.SEVERE, null, ex);
                     }					
         }
-    });	
-        addBehaviour(comportementparallele);
+    });        
   }
 }
 
