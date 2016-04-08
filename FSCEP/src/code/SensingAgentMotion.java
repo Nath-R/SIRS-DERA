@@ -91,16 +91,16 @@ public class SensingAgentMotion extends Agent {
                                 EPRuntime cepRT = cep.getEPRuntime();
                                 // We register an EPL statement
                                 EPAdministrator cepAdm = cep.getEPAdministrator();
-                                EPStatement cepStatement = cepAdm.createEPL("select distinct timeStamp, idSensor, status, location, trust from Event.win:time(10 sec) order by idSensor");
+                                EPStatement cepStatement = cepAdm.createEPL("select distinct timeStamp, idSensor, status, location, trust from Event.win:time(30 sec) where status =\"ON\" order by idSensor");
                                 System.out.println("Sending event Motion :" + e);
                                 cepRT.sendEvent(e);
-                                EPStatement cepStatement3 = cepAdm.createEPL("select sum(trust) as sumTrust from Event.win:time(10 sec) where status =\"ON\" ");                                                      
+                               // EPStatement cepStatement3 = cepAdm.createEPL("select sum(trust) as sumTrust from Event.win:time(10 sec) where status =\"ON\" ");                                                      
                                 
-                                EPStatement cepStatement2 = cepAdm.createEPL("select location, sum(trust) as sumTrust from Event.win:time(10 sec) where status =\"ON\" group by location ");                        
+                                //EPStatement cepStatement2 = cepAdm.createEPL("select location, sum(trust) as sumTrust from Event.win:time(10 sec) where status =\"ON\" group by location ");                        
                                 cepStatement.addListener(new CEPListener());
-                                cepStatement3.addListener(new CEPListenerCount());
-                                cepStatement2.addListener(new CEPListenerSumTrust()); 
-                                System.out.println("End Motion");
+                                //cepStatement3.addListener(new CEPListenerCount());
+                                //cepStatement2.addListener(new CEPListenerSumTrust()); 
+                                //System.out.println("End Motion");
                             }
                         }
                         } catch (IOException ex) {

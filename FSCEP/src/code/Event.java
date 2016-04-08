@@ -36,6 +36,14 @@ public class Event {
         this.location = location;
         this.trust = trust;
     }
+
+    public Event(String timeStamp, String idSensor, String status, String location, double trust) {
+        this.timeStamp = timeStamp;
+        this.idSensor = idSensor;
+        this.status = status;
+        this.location = location;
+        this.trust = trust;
+    }
     
     public String getTimeStamp() {
         return timeStamp;
