@@ -26,8 +26,8 @@ public abstract class SensingAgent extends Agent
 	private static final long serialVersionUID = -3623219027169689745L;
 	
 	/**
-	 * Reading port
-	 * TODO Hard coded for the time being.
+	 * Reading port.
+	 * Given as parameters when creating the agent.
 	 */
 	int port;
 	
@@ -40,8 +40,11 @@ public abstract class SensingAgent extends Agent
 	 */
 	protected void setup()
 	{
-		port = 4030;
+		Object[] args = getArguments();
+		port = Integer.parseInt( args[0].toString() );
 		addBehaviour( new SensingAgentBehavior(this, 500) );
+		
+		System.out.println("SensingAgent | "+"Creating agent on port: "+port);
 	}
 	
 	/**
