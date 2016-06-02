@@ -29,7 +29,13 @@ public abstract class SensingAgent extends Agent
 	 * Reading port.
 	 * Given as parameters when creating the agent.
 	 */
-	int port;
+	protected int port;
+	
+	/**
+	 * Data type acquired by the agent.
+	 * TODO given by parameters
+	 */
+	protected String dataType;
 	
 	
 	
@@ -45,7 +51,15 @@ public abstract class SensingAgent extends Agent
 		addBehaviour( new SensingAgentBehavior(this, 500) );
 		
 		System.out.println("SensingAgent | "+"Creating agent on port: "+port);
+		
+		init();
 	}
+	
+	/**
+	 * Initialization of the agents.
+	 * It can be use to initialize esper stuffs for instance.
+	 */
+	public abstract void init();
 	
 	/**
 	 * Manage the received data.

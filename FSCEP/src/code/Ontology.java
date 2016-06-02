@@ -1,5 +1,7 @@
 package code;
 
+import java.io.File;
+
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -45,10 +47,11 @@ public class Ontology
     /***********************************/
 
     // Directory where we've stored the local data files, such as pizza.rdf.owl
-    public static final String SOURCE = "./src/ontology/";
+    public static final String SOURCE = "FSCEP/src/ontology/";
 
     // Pizza ontology namespace
     public static final String PIZZA_NS = "http://users.abo.fi/ndiaz/public/HumanActivity.owl#";
+    //public static final String PIZZA_NS = SOURCE + "event_humanAct.owl#";
 
     /***********************************/
     /* Static variables                */
@@ -88,20 +91,24 @@ public class Ontology
         loadData( m );
         String prefix = "prefix rdf: <" + RDF.getURI() + ">\n" +
                         "prefix owl: <" + OWL.getURI() + ">\n"+
-                        "PREFIX xsd: <"+ XSD.getURI() +"> \n"+
+                        "prefix xsd: <"+ XSD.getURI() +"> \n"+
                         "prefix rdfs: <" + RDFS.getURI() + ">\n" +
-                        "prefix :<" + PIZZA_NS + ">\n" ;                    
+                        "prefix :<" + PIZZA_NS + ">\n" ;  
+        
+        String query = prefix +
+                "select ?location ?trust \n "+ 
+                "where { ?device rdf:type :"+sensorType+" . \n " +  
+                //"where { ?device rdf:type :MotionSensor . \n " + 
+                "        ?device :isLocatedIn ?location . \n" +
+                "        ?device :hasName ?name . \n" +
+                "         FILTER (?name = \""+name+"\") . \n"+
+                "        ?device :hasTrust ?trust     \n" +        
+                "}";
                         
 
-        results  = showQuery( m,
-                           prefix +
-                           "select ?location ?trust \n "+ 
-                           "where { ?device rdf:type :"+sensorType+". \n " +                           
-                           "        ?device :isLocatedIn ?location. \n" +
-                           "        ?device :hasName ?name. \n" +
-                           "         FILTER (?name = \""+name+"\"). \n"+
-                           "        ?device :hasTrust ?trust     \n" +        
-                           "}" );
+        System.out.println(query);
+        
+        results  = showQuery( m, query );
         
         return results;
     }
@@ -111,6 +118,7 @@ public class Ontology
     }
 
     protected void loadData( Model m ) {
+    	String path = new String(SOURCE + "event_humanAct.owl");
         FileManager.get().readModel( m, SOURCE + "event_humanAct.owl" );
     }
 
