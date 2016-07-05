@@ -106,7 +106,7 @@ public class Ontology
                 "}";
                         
 
-        System.out.println(query);
+        //System.out.println(query);
         
         results  = showQuery( m, query );
         

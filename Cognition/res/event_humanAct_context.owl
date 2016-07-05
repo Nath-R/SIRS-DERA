@@ -1908,15 +1908,6 @@ of relations hasNUsers to be exactly 1.
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
         <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
         <owl:inverseOf rdf:resource="http://users.abo.fi/ndiaz/public/HumanActivity.owl#spaceBelongsTo"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Building"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Floor"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Wing"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -1932,6 +1923,15 @@ of relations hasNUsers to be exactly 1.
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Building"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Floor"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Wing"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -2385,6 +2385,14 @@ of relations hasNUsers to be exactly 1.
     <owl:ObjectProperty rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#isLocationFor">
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
         <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#GenericUser"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Object"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -2394,14 +2402,6 @@ of relations hasNUsers to be exactly 1.
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#GenericUser"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Object"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -2804,6 +2804,15 @@ of relations hasNUsers to be exactly 1.
     <owl:ObjectProperty rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#spaceBelongsTo">
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
         <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Building"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Floor"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Wing"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -2819,15 +2828,6 @@ of relations hasNUsers to be exactly 1.
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Building"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Floor"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Wing"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -3297,16 +3297,6 @@ of relations hasNUsers to be exactly 1.
 
     <owl:DatatypeProperty rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#hasID">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Door"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Lift"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Object"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Stairs"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -3329,6 +3319,16 @@ of relations hasNUsers to be exactly 1.
                 </owl:intersectionOf>
             </rdfs:Datatype>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Door"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Lift"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Object"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Stairs"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -3379,6 +3379,14 @@ of relations hasNUsers to be exactly 1.
     <owl:DatatypeProperty rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#hasLighting">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment rdf:datatype="&xsd;string">The lux is the International System of Units unit for luminous emittance</rdfs:comment>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Environment"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Location"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -3401,14 +3409,6 @@ of relations hasNUsers to be exactly 1.
                 </owl:intersectionOf>
             </rdfs:Datatype>
         </rdfs:range>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Environment"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Location"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -3621,14 +3621,6 @@ of relations hasNUsers to be exactly 1.
     <owl:DatatypeProperty rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#hasNoiseLevel">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment rdf:datatype="&xsd;string">In IS, measured in decibel (dB)</rdfs:comment>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Environment"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Location"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -3651,6 +3643,14 @@ of relations hasNUsers to be exactly 1.
                 </owl:intersectionOf>
             </rdfs:Datatype>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Environment"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Location"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -3679,14 +3679,6 @@ of relations hasNUsers to be exactly 1.
     <owl:DatatypeProperty rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#hasPressure">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment rdf:datatype="&xsd;string">Measured in atmospheres (IS)</rdfs:comment>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Environment"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Location"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -3709,6 +3701,14 @@ of relations hasNUsers to be exactly 1.
                 </owl:intersectionOf>
             </rdfs:Datatype>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Environment"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Location"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -3817,6 +3817,17 @@ of relations hasNUsers to be exactly 1.
     <owl:DatatypeProperty rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#hasTemperature">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment rdf:datatype="&xsd;string">In Centigrades degrees</rdfs:comment>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Environment"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#GenericUser"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Location"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Object"/>
+                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Room"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -3839,17 +3850,6 @@ of relations hasNUsers to be exactly 1.
                 </owl:intersectionOf>
             </rdfs:Datatype>
         </rdfs:range>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Environment"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#GenericUser"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Location"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Object"/>
-                    <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Room"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -6609,6 +6609,15 @@ Note: Transition among states are modelled through the object property ((Activit
     
 
 
+    <!-- http://users.abo.fi/ndiaz/public/HumanActivity.owl#User -->
+
+    <owl:NamedIndividual rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#User">
+        <rdf:type rdf:resource="http://users.abo.fi/ndiaz/public/HumanActivity.owl#User"/>
+        <hasName>Unknown</hasName>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://users.abo.fi/ndiaz/public/HumanActivity.owl#WalkByCorridorEnteringN -->
 
     <owl:NamedIndividual rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#WalkByCorridorEnteringN">
@@ -6741,10 +6750,23 @@ Note: Transition among states are modelled through the object property ((Activit
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#AttendConference"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#SpeakAtConference"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Symposium"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Workshop"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Bike"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Boat"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Bus"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Metro"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Park"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Road"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Street"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Terrace"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Train"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#HMM"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#LearningAutomaton"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#RegularAutomaton"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -6766,6 +6788,16 @@ Note: Transition among states are modelled through the object property ((Activit
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Available"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Away"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Busy"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#OnHoliday"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#OnLeave"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Auditorium"/>
             <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Bathroom"/>
             <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#ComputerRoom"/>
@@ -6780,11 +6812,18 @@ Note: Transition among states are modelled through the object property ((Activit
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Available"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Away"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Busy"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#OnHoliday"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#OnLeave"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#AttendConference"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#SpeakAtConference"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Symposium"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Workshop"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Building"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Lift"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Room"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -6800,49 +6839,11 @@ Note: Transition among states are modelled through the object property ((Activit
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#HMM"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#LearningAutomaton"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#RegularAutomaton"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Bike"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Boat"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Bus"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Metro"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Park"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Road"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Street"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Terrace"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Train"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#AlarmMessage"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#CommunicationMessage"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#ErrorMessage"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#InformationMessage"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#SuggestionMessage"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Building"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Lift"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Room"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#DptmMeeting"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#GroupMeeting"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#LabMeeting"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Curtain"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Device"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Notebook"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Pen"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Window"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -6874,11 +6875,19 @@ Note: Transition among states are modelled through the object property ((Activit
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Curtain"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Device"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Notebook"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Pen"/>
-            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#Window"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#AlarmMessage"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#CommunicationMessage"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#ErrorMessage"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#InformationMessage"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#SuggestionMessage"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#DptmMeeting"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#GroupMeeting"/>
+            <rdf:Description rdf:about="http://users.abo.fi/ndiaz/public/HumanActivity.owl#LabMeeting"/>
         </owl:members>
     </rdf:Description>
 </rdf:RDF>
